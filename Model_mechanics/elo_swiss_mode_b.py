@@ -365,6 +365,8 @@ class EloSwissModeBGenerator(EloSwissGenerator):
                 del verifier_logprobs
             if tilted_rewards is not None:
                 del tilted_rewards
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
 
             if eos_hit:
                 logger.info("EOS token generated. Stopping.")

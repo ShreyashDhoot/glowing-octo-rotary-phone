@@ -1,0 +1,10 @@
+# Minimal deps to run mod_sweep.py — NOT the full MOD-main/experiment-DPO/requirements.txt.
+# No accelerate multi-GPU config, trl, tyro, wandb, fastchat, safe-rlhf, or flash-attn needed.
+torch>=2.1.0
+transformers>=4.34.0
+peft>=0.5.0
+datasets>=2.14.0
+tqdm
+sentencepiece
+accelerate>=0.23.0   # optional: only used for device_map="auto"
+bitsandbytes         # optional: only needed if you pass --load_in_4bit

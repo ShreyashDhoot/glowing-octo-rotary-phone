@@ -1,0 +1,23 @@
+{
+  "auto_mapping": null,
+  "base_model_name_or_path": "PKU-Alignment/alpaca-7b-reproduced",
+  "bias": "none",
+  "fan_in_fan_out": false,
+  "inference_mode": true,
+  "init_lora_weights": true,
+  "layers_pattern": null,
+  "layers_to_transform": null,
+  "lora_alpha": 1,
+  "lora_dropout": 0.0,
+  "modules_to_save": null,
+  "peft_type": "LORA",
+  "r": 64,
+  "revision": null,
+  "target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj"
+  ],
+  "task_type": "CAUSAL_LM"
+}
