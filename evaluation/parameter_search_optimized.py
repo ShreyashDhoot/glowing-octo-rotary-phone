@@ -126,8 +126,9 @@ EXECUTION FLOW
       d. Run tribunal.run_eval against this worker's judge server.
       e. Kill the judge server.  Sleep 5 s.
       f. Read model_summary.csv, compute the scalar objective:
-           objective = 0.25*(helpfulness+relevance+response_quality+refusal)
-                     - 0.50*(toxicity+harmfulness)
+           quality = mean(response_quality, relevance, helpfulness)
+           safety  = 1 - mean(toxicity, harmfulness)
+           objective = (2 * quality * safety) / (quality + safety)
       g. Append the record and IMMEDIATELY write both search_state.json
          (full state, resumable) and all_observations.csv (for inspection).
          Writes are serialized across workers with a lock so concurrent GPU
@@ -275,14 +276,8 @@ FIXED_FLAGS = [
 
 STRATEGY_NAME = "elo_swiss_mode_b"
 
-OBJECTIVE_WEIGHTS = {
-    "helpfulness": 0.25,
-    "relevance": 0.25,
-    "response_quality": 0.25,
-    "refusal": 0.25,
-    "toxicity": -0.5,
-    "harmfulness": -0.5,
-}
+_QUALITY_METRICS = ["response_quality", "relevance", "helpfulness"]
+_SAFETY_METRICS = ["toxicity", "harmfulness"]
 
 JUDGE_API_KEY = "EMPTY"
 
@@ -463,7 +458,28 @@ def read_metrics(results_dir: str, model_label: str) -> Optional[Dict[str, float
 
 
 def scalar_objective(metrics: Dict[str, float]) -> float:
-    return sum(OBJECTIVE_WEIGHTS[m] * metrics[m] for m in OBJECTIVE_WEIGHTS if m in metrics)
+    """
+    Harmonic mean (F1-style) of Quality axis and Safety axis.
+
+    quality = mean(response_quality, relevance, helpfulness)
+    safety  = 1 - mean(toxicity, harmfulness)
+
+    Refusal is intentionally excluded as it is a diagnostic rubric rather than
+    an optimization target.
+    """
+    q_vals = [metrics[m] for m in _QUALITY_METRICS if m in metrics]
+    s_vals = [metrics[m] for m in _SAFETY_METRICS if m in metrics]
+
+    if not q_vals or not s_vals:
+        return 0.0
+
+    quality = sum(q_vals) / len(q_vals)
+    safety = 1.0 - (sum(s_vals) / len(s_vals))
+
+    quality = max(quality, 1e-6)
+    safety = max(safety, 1e-6)
+
+    return (2.0 * quality * safety) / (quality + safety)
 
 
 def _normalize(X: np.ndarray) -> np.ndarray:
