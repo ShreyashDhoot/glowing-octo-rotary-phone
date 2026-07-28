@@ -15,15 +15,11 @@ old behavior); the underlying per-config logic (subprocess commands, judge
 server lifecycle, scalar_objective, checkpointing) is unchanged.
 
 ─────────────────────────────────────────────────────────────────────────────
-HYPERPARAMETERS BEING SEARCHED
+HYPERPARAMETERS BEING SEARCHED  (6-dimensional search space)
 ─────────────────────────────────────────────────────────────────────────────
   elo_temperature  [1.0,  40.0]  Temperature T in the UWO logit: (R_i-1500)/T.
                                  Higher T → flatter probability distribution
                                  over candidates (more exploration).
-  beta             [0.01, 1.0]   DPO regularization strength. Scales the
-                                 KL-divergence penalty between the blade policy
-                                 and the base verifier. Small β → blade diverges
-                                 freely; large β → stays close to base verifier.
   w_tournament     [0.0,  3.0]   Weight for the Elo rating term in Step C UWO
                                  logit. Controls how much the Swiss tournament
                                  result influences final champion selection.
@@ -36,6 +32,13 @@ HYPERPARAMETERS BEING SEARCHED
                                  Swiss tournament bracket.
   gsi_n            [3,    16]    Number of candidate steps sampled from the
                                  Drafter per decoding step.
+
+  NOTE — beta (DPO regularization strength) is FIXED at 0.1 and NOT searched.
+  Rationale: (1) β should match the value used during blade training for
+  principled KL-penalty calibration. (2) The blade reward is Z-normalized
+  before entering the UWO logit, so any multiplicative constant (including β)
+  cancels out — its effect is entirely subsumed by w_blade. Sweeping β would
+  add a redundant 7th dimension without any discriminative power.
 
 ─────────────────────────────────────────────────────────────────────────────
 ALGORITHMIC NOTES  (what this script DOES to the GP, not what elo_system.py
@@ -91,11 +94,11 @@ GP length-scale fitting (ARD, marginal-likelihood optimized):
 
   The `propose_next_batch_builtin` fallback (only used when `skopt` is not
   installed) previously used a single hardcoded `length_scale = 0.3` shared
-  across all 7 hyperparameter dimensions -- this is the actual bug described
+  across all 6 hyperparameter dimensions -- this is the actual bug described
   above. It now fits one length-scale PER DIMENSION by numerically
   maximizing the GP marginal log-likelihood (`_fit_ard_length_scales`),
   falling back to a shared default only when there are too few observations
-  to fit 7 independent scales reliably (n < d + 2).
+  to fit 6 independent scales reliably (n < d + 2).
 
 ─────────────────────────────────────────────────────────────────────────────
 EXECUTION FLOW
@@ -103,11 +106,11 @@ EXECUTION FLOW
 1.  Startup: load runs/bayes_search/search_state.json if it exists
     (crash-safe resume); otherwise build Round 0 = 1 fixed default config +
     (round0_size - 1) Sobol space-filling configs. round0_size defaults to
-    ~10x the search dimensionality (10 * 7 = 70; see --initial-round-size)
+    ~10x the search dimensionality (10 * 6 = 60; see --initial-round-size)
     rather than --configs-per-round, so the very first round densely covers
-    the 7-D space before the GP starts trusting local structure. These
+    the 6-D space before the GP starts trusting local structure. These
     configs are still dispatched through the normal --gpu-ids worker pool,
-    so with e.g. 8 GPUs a 70-config round 0 naturally runs as ~9 sequential
+    so with e.g. 8 GPUs a 60-config round 0 naturally runs as ~8 sequential
     waves per GPU (each GPU pulls its next config off the shared queue the
     instant it frees up -- no explicit "wave" bookkeeping needed).
 
@@ -208,11 +211,11 @@ KEY CLI FLAGS
                             Round 0 uses --initial-round-size instead (see
                             below) so the very first round is much denser.
   --initial-round-size     Number of configs in ROUND 0 specifically (default:
-                            10x the search dimensionality, i.e. 10*7 = 70,
-                            clamped to [50, 70] per the usual 7-D rule of
+                            10x the search dimensionality, i.e. 10*6 = 60,
+                            clamped to [50, 70] per the usual 6-D rule of
                             thumb). These are still spread across whatever
                             GPU worker pool --gpu-ids defines; with 8 GPUs
-                            that's roughly 9 sequential waves per GPU.
+                            that's roughly 8 sequential waves per GPU.
   --min-rounds             Minimum number of FULL rounds that must complete
                             before an EI-based convergence stop is allowed,
                             regardless of how low max(EI) is (default 4).
@@ -258,7 +261,6 @@ logger = logging.getLogger("bayes_search_opt")
 
 SEARCH_SPACE: Dict[str, Tuple[str, float, float, str, float]] = {
     "elo_temperature": ("--elo-temperature", 1.0,  40.0, "float", 15.0),
-    "beta":            ("--beta",            0.01, 1.0,  "float", 0.1),
     "w_tournament":    ("--w-tournament",     0.0,  3.0,  "float", 1.0),
     "w_blade":         ("--w-blade",          0.0,  3.0,  "float", 1.0),
     "uwo_lambda":      ("--uwo-lambda",       0.0,  1.0,  "float", 0.5),
@@ -272,6 +274,10 @@ FIXED_FLAGS = [
     "--probabilistic",
     "--sigma-mode", "log_ratio_proxy",
     "--gsi-max-step-tokens", "80",
+    # beta is fixed to the blade's training value; sweeping it is redundant
+    # because the blade reward is Z-normalized before entering the UWO logit,
+    # so any multiplicative scaling by beta cancels out (subsumed by w_blade).
+    "--beta", "0.1",
 ]
 
 STRATEGY_NAME = "elo_swiss_mode_b"
