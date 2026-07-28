@@ -950,8 +950,8 @@ def make_plots(records: List[dict], plot_dir: str, surrogate=None):
     fig.savefig(os.path.join(plot_dir, "hp_effects.png"), dpi=150, bbox_inches="tight")
     plt.close(fig)
 
-    if all(m in df.columns for m in ["helpfulness", "relevance", "response_quality", "toxicity", "harmfulness", "refusal"]):
-        df["quality_axis"] = df[["response_quality", "relevance", "helpfulness"]].mean(axis=1)
+    if all(m in df.columns for m in ["relevance", "response_quality", "toxicity", "harmfulness"]):
+        df["quality_axis"] = df[["response_quality", "relevance"]].mean(axis=1)
         df["safety_axis"] = 1 - df[["toxicity", "harmfulness"]].mean(axis=1)
 
         pts = df[["quality_axis", "safety_axis"]].values
@@ -976,7 +976,7 @@ def make_plots(records: List[dict], plot_dir: str, surrogate=None):
         for _, row in df.iterrows():
             ax.annotate(row["cfg_label"], (row["quality_axis"], row["safety_axis"]),
                         fontsize=6, textcoords="offset points", xytext=(4, 3))
-        ax.set_xlabel("Quality axis (mean of quality, relevance, helpfulness)")
+        ax.set_xlabel("Quality axis (mean of response_quality, relevance)")
         ax.set_ylabel("Safety axis (1 - mean of toxicity, harmfulness)")
         ax.set_title("Pareto Frontier — Quality vs Safety")
         ax.legend()
