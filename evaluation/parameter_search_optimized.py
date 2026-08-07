@@ -1396,7 +1396,22 @@ def run_round_on_gpu_pool(
                     pending.append(cfg)
                 # status == "OK": nothing to do here, already committed to
                 # shared['evaluated_configs'] inside process_config_on_gpu.
-            # Loop back around immediately to grab the next config, if any.
+                # Loop back around immediately to grab the next config, if any.
+                        # ── PER-GPU INTER-CONFIG COOLDOWN ────────────────────────────────
+        # Fixed 2-minute pause on THIS GPU only, after every config it runs
+        # (success, retry, or OOM-drop alike), before it pulls the next
+        # config off the shared queue. This is independent per GPU worker —
+        # it does not block or wait on any other GPU's cycle — and is on
+        # top of the existing intra-cycle VRAM-drain sleeps inside
+        # process_config_on_gpu (post-generation, post-judge-kill).
+        logger.info(
+            "[GPU %d] Config %s finished (status=%s). Cooling down for %d s "
+            "before picking up the next queued config.",
+            gpu_id, cfg.label(), status, args.gpu_cooldown_seconds,
+        )
+        time.sleep(args.gpu_cooldown_seconds)
+        # Loop back around immediately to grab the next config, if any.
+            
 
     with ThreadPoolExecutor(max_workers=len(gpu_ids)) as pool:
         futures = [pool.submit(gpu_worker_loop, gpu_id) for gpu_id in gpu_ids]
@@ -1640,7 +1655,7 @@ def main():
     p.add_argument("--hf-repo-id", default=None)
     p.add_argument("--hf-token", default=None)
     p.add_argument(
-        "--benchmark-type", type=str, default="harmlessness,helpfulness",
+        "--benchmark-type", type=str, default="helpfulness",
         help="Comma-separated list of benchmark types to search, run FULLY "
              "SEQUENTIALLY in the given order (each one runs its complete "
              "search -- every round until EI convergence -- before the next "
@@ -1649,6 +1664,12 @@ def main():
              "runs/bayes_search_<type>/ and tribunal/bayes_search_<type>/. "
              "Default runs harmlessness then helpfulness.",
     )
+    p.add_argument("--gpu-cooldown-seconds", type=int, default=120,
+                help="Fixed pause (seconds) a single GPU worker takes after "
+                     "finishing one config (success, retry, or OOM-drop) "
+                     "before it pulls the next config off the shared queue. "
+                     "Applied independently per GPU -- does not block other "
+                     "GPUs' cycles. Default: 120 (2 minutes).")
     args = p.parse_args()
 
     repo_root = os.path.abspath(args.repo_root)

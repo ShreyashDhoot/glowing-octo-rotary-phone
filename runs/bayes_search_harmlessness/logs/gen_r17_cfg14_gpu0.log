@@ -1,0 +1,146 @@
+2026-08-01 10:11:25,751 | INFO | __main__ | Loading HH-RLHF harmless-base dataset...
+2026-08-01 10:11:26,161 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/datasets/Anthropic/hh-rlhf/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-08-01 10:11:26,162 | WARNING | huggingface_hub.utils._http | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-08-01 10:11:26,172 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/Anthropic/hh-rlhf/09be8c5bbc57cb3887f3a9732ad6aa7ec602a1fa/README.md "HTTP/1.1 200 OK"
+2026-08-01 10:11:26,391 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/datasets/Anthropic/hh-rlhf/resolve/09be8c5bbc57cb3887f3a9732ad6aa7ec602a1fa/hh-rlhf.py "HTTP/1.1 404 Not Found"
+2026-08-01 10:11:27,049 | INFO | httpx | HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/Anthropic/hh-rlhf/Anthropic/hh-rlhf.py "HTTP/1.1 404 Not Found"
+2026-08-01 10:11:27,277 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/datasets/Anthropic/hh-rlhf/revision/09be8c5bbc57cb3887f3a9732ad6aa7ec602a1fa "HTTP/1.1 200 OK"
+2026-08-01 10:11:27,500 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/datasets/Anthropic/hh-rlhf/resolve/09be8c5bbc57cb3887f3a9732ad6aa7ec602a1fa/.huggingface.yaml "HTTP/1.1 404 Not Found"
+2026-08-01 10:11:27,728 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/datasets/Anthropic/hh-rlhf/tree/09be8c5bbc57cb3887f3a9732ad6aa7ec602a1fa/harmless-base%2Fdata?recursive=true&expand=false "HTTP/1.1 404 Not Found"
+2026-08-01 10:11:27,943 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/datasets/Anthropic/hh-rlhf/tree/09be8c5bbc57cb3887f3a9732ad6aa7ec602a1fa/harmless-base?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-01 10:11:28,164 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/datasets/Anthropic/hh-rlhf/tree/09be8c5bbc57cb3887f3a9732ad6aa7ec602a1fa?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-01 10:11:28,409 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/datasets/Anthropic/hh-rlhf/resolve/09be8c5bbc57cb3887f3a9732ad6aa7ec602a1fa/dataset_infos.json "HTTP/1.1 404 Not Found"
+2026-08-01 10:11:28,536 | INFO | __main__ | Sampled 50 prompts.
+2026-08-01 10:11:28,536 | INFO | __main__ | Loading shared verifier base model (Qwen 2.5 7B) + blade...
+2026-08-01 10:11:28,537 | INFO | Model_mechanics.models | Downloading base model from dataset repo: divyajot5005/ndna / SFT/Qwen_SFT_merged
+2026-08-01 10:11:28,760 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/datasets/divyajot5005/ndna/revision/main "HTTP/1.1 200 OK"
+2026-08-01 10:11:29,005 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/datasets/divyajot5005/ndna/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-01 10:11:29,352 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/datasets/divyajot5005/ndna/tree/main?expand=false&recursive=true&limit=1000&cursor=ZXlKbWFXeGxYMjVoYldVaU9pSnVaRzVoWDNCeVlXZDVZUzlqYjJ4c1lYQnpaVjl5ZFc1elgyMTFiSFJwTDJSbFpYQnpaV1ZyWDJ4c2JWOXlNVjlpWVhObEwyVjRjREV0TlRBd0xXUmxaWEJ6WldWclgySmhjMlV0WTNKdmMzTXZaMlZ1Tmk5dFpYUnlhV056TDNOd1pXTjBjbUZzWDJOMWNuWmhkSFZ5WlM1cWMyOXVJaXdpZEhKbFpWOXZhV1FpT2lKaFlUWmxZbU0wWm1aalltRXdNVGN6TkdVNVlqUTRZakk0T1RSaE5UTTJOR1ZpTXpWaVlqWmxJbjA9OjEwMDA%3D "HTTP/1.1 200 OK"
+======================================================================
+  Swiss Knife — GSI Five-Strategy Harmlessness Benchmark (no judge)
+======================================================================
+  Strategies    : ['elo_swiss_mode_b']
+  Blade         : harmlessness
+  n (candidates): 12
+  α (mix)       : 0.5
+  β (DPO)       : 0.1
+  τ (BT temp)   : 1.0
+  threshold     : -5.0
+  # prompts     : 50
+  max tokens    : 512
+  dtype         : bfloat16
+======================================================================
+Fetching ... files: 0it [00:00, ?it/s]Fetching ... files: 14it [00:00, 78085.45it/s]
+2026-08-01 10:11:29,373 | INFO | Model_mechanics.models | Base model cached at: /root/.cache/huggingface/hub/datasets--divyajot5005--ndna/snapshots/ef5534a2722c506a58218aff170efbc405093efe/SFT/Qwen_SFT_merged
+2026-08-01 10:11:29,373 | INFO | Model_mechanics.models | Loading tokenizer from: /root/.cache/huggingface/hub/datasets--divyajot5005--ndna/snapshots/ef5534a2722c506a58218aff170efbc405093efe/SFT/Qwen_SFT_merged
+2026-08-01 10:11:31,054 | INFO | Model_mechanics.models | Loading base model (draft + ref): /root/.cache/huggingface/hub/datasets--divyajot5005--ndna/snapshots/ef5534a2722c506a58218aff170efbc405093efe/SFT/Qwen_SFT_merged  [dtype=torch.bfloat16, device=cpu]
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]Loading weights:   0%|          | 1/339 [00:00<04:11,  1.34it/s]Loading weights:   8%|▊         | 28/339 [00:00<00:08, 37.09it/s]Loading weights:  15%|█▍        | 50/339 [00:01<00:04, 65.35it/s]Loading weights:  19%|█▉        | 64/339 [00:01<00:03, 76.64it/s]Loading weights:  23%|██▎       | 78/339 [00:01<00:03, 85.36it/s]Loading weights:  27%|██▋       | 91/339 [00:01<00:03, 80.80it/s]Loading weights:  30%|███       | 103/339 [00:01<00:02, 82.11it/s]Loading weights:  33%|███▎      | 113/339 [00:01<00:02, 82.39it/s]Loading weights:  37%|███▋      | 126/339 [00:01<00:02, 82.88it/s]Loading weights:  42%|████▏     | 144/339 [00:02<00:02, 95.27it/s]Loading weights:  46%|████▌     | 155/339 [00:02<00:01, 98.08it/s]Loading weights:  49%|████▉     | 166/339 [00:02<00:02, 82.54it/s]Loading weights:  54%|█████▍    | 184/339 [00:02<00:01, 88.59it/s]Loading weights:  58%|█████▊    | 198/339 [00:02<00:01, 93.11it/s]Loading weights:  61%|██████▏   | 208/339 [00:02<00:01, 92.90it/s]Loading weights:  65%|██████▌   | 222/339 [00:02<00:01, 87.87it/s]Loading weights:  73%|███████▎  | 246/339 [00:03<00:00, 116.88it/s]Loading weights:  76%|███████▋  | 259/339 [00:03<00:00, 106.50it/s]Loading weights:  83%|████████▎ | 280/339 [00:03<00:00, 129.49it/s]Loading weights:  87%|████████▋ | 295/339 [00:03<00:00, 111.32it/s]Loading weights:  96%|█████████▌| 325/339 [00:03<00:00, 150.14it/s]Loading weights: 100%|██████████| 339/339 [00:03<00:00, 92.12it/s] 
+2026-08-01 10:11:36,791 | INFO | Model_mechanics.models | Base model loaded and frozen. Params: 7,615,616,512
+2026-08-01 10:11:36,791 | INFO | Model_mechanics.models | Loading blade 'harmlessness' base copy [dtype=torch.bfloat16, device=cpu]...
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]Loading weights:   0%|          | 1/339 [00:00<03:43,  1.51it/s]Loading weights:   9%|▉         | 30/339 [00:00<00:06, 51.07it/s]Loading weights:  13%|█▎        | 45/339 [00:00<00:04, 65.74it/s]Loading weights:  17%|█▋        | 58/339 [00:01<00:03, 77.36it/s]Loading weights:  22%|██▏       | 76/339 [00:01<00:03, 81.14it/s]Loading weights:  26%|██▌       | 88/339 [00:01<00:02, 88.80it/s]Loading weights:  29%|██▉       | 100/339 [00:01<00:02, 89.36it/s]Loading weights:  34%|███▎      | 114/339 [00:01<00:02, 84.05it/s]Loading weights:  37%|███▋      | 124/339 [00:01<00:02, 83.53it/s]Loading weights:  42%|████▏     | 142/339 [00:01<00:01, 103.67it/s]Loading weights:  45%|████▌     | 154/339 [00:02<00:01, 103.00it/s]Loading weights:  49%|████▉     | 166/339 [00:02<00:01, 104.70it/s]Loading weights:  53%|█████▎    | 178/339 [00:02<00:01, 94.95it/s] Loading weights:  58%|█████▊    | 196/339 [00:02<00:01, 101.37it/s]Loading weights:  62%|██████▏   | 210/339 [00:02<00:01, 108.00it/s]Loading weights:  67%|██████▋   | 226/339 [00:02<00:01, 112.76it/s]Loading weights:  70%|███████   | 238/339 [00:02<00:00, 104.42it/s]Loading weights:  76%|███████▌  | 256/339 [00:02<00:00, 119.51it/s]Loading weights:  79%|███████▉  | 269/339 [00:04<00:02, 30.00it/s] Loading weights:  83%|████████▎ | 280/339 [00:04<00:02, 23.77it/s]Loading weights:  85%|████████▍ | 287/339 [00:06<00:03, 13.48it/s]Loading weights:  86%|████████▌ | 292/339 [00:07<00:04, 11.34it/s]Loading weights:  87%|████████▋ | 296/339 [00:08<00:04,  9.70it/s]Loading weights:  89%|████████▉ | 302/339 [00:08<00:03, 10.21it/s]Loading weights:  90%|████████▉ | 305/339 [00:10<00:06,  5.59it/s]Loading weights:  93%|█████████▎| 314/339 [00:10<00:03,  7.95it/s]Loading weights:  93%|█████████▎| 316/339 [00:13<00:05,  4.18it/s]Loading weights:  94%|█████████▍| 318/339 [00:13<00:04,  4.61it/s]Loading weights:  95%|█████████▍| 322/339 [00:13<00:02,  6.04it/s]Loading weights:  97%|█████████▋| 328/339 [00:15<00:02,  4.85it/s]Loading weights: 100%|█████████▉| 338/339 [00:15<00:00,  8.58it/s]Loading weights: 100%|██████████| 339/339 [00:15<00:00, 22.19it/s]
+2026-08-01 10:11:53,721 | INFO | Model_mechanics.models | Downloading dataset-hosted adapter divyajot5005/ndna / SFT/qwen25_dpo_output/final_dpo_adapter ...
+2026-08-01 10:11:54,029 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/datasets/divyajot5005/ndna/revision/main "HTTP/1.1 200 OK"
+2026-08-01 10:11:54,307 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/datasets/divyajot5005/ndna/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-01 10:11:54,611 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/datasets/divyajot5005/ndna/tree/main?expand=false&recursive=true&limit=1000&cursor=ZXlKbWFXeGxYMjVoYldVaU9pSnVaRzVoWDNCeVlXZDVZUzlqYjJ4c1lYQnpaVjl5ZFc1elgyMTFiSFJwTDJSbFpYQnpaV1ZyWDJ4c2JWOXlNVjlpWVhObEwyVjRjREV0TlRBd0xXUmxaWEJ6WldWclgySmhjMlV0WTNKdmMzTXZaMlZ1Tmk5dFpYUnlhV056TDNOd1pXTjBjbUZzWDJOMWNuWmhkSFZ5WlM1cWMyOXVJaXdpZEhKbFpWOXZhV1FpT2lKaFlUWmxZbU0wWm1aalltRXdNVGN6TkdVNVlqUTRZakk0T1RSaE5UTTJOR1ZpTXpWaVlqWmxJbjA9OjEwMDA%3D "HTTP/1.1 200 OK"
+Fetching ... files: 0it [00:00, ?it/s]Fetching ... files: 11it [00:00, 85124.25it/s]
+2026-08-01 10:11:54,640 | INFO | Model_mechanics.models | Attaching LoRA adapter from local path: /root/.cache/huggingface/hub/datasets--divyajot5005--ndna/snapshots/ef5534a2722c506a58218aff170efbc405093efe/SFT/qwen25_dpo_output/final_dpo_adapter
+/LAB/swiss-knife/lib/python3.12/site-packages/torch/cuda/__init__.py:1061: UserWarning: Can't initialize NVML
+  raw_cnt = _raw_device_count_nvml()
+2026-08-01 10:12:52,347 | INFO | Model_mechanics.models | Blade 'harmlessness' loaded. LoRA params: 40,370,176
+2026-08-01 10:12:52,354 | INFO | __main__ | Loading drafter...
+2026-08-01 10:12:52,355 | INFO | Model_mechanics.models | Loading drafter tokenizer from: Qwen/Qwen2.5-3B-Instruct
+2026-08-01 10:12:52,611 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-3B-Instruct/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-01 10:12:52,624 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-3B-Instruct/aa8e72537993ba99e69dfaafa59ed015b17504d1/config.json "HTTP/1.1 200 OK"
+2026-08-01 10:12:52,870 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-3B-Instruct/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-01 10:12:52,883 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-3B-Instruct/aa8e72537993ba99e69dfaafa59ed015b17504d1/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-01 10:12:53,097 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen2.5-3B-Instruct/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-01 10:12:53,319 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen2.5-3B-Instruct/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-01 10:12:54,996 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen2.5-3B-Instruct "HTTP/1.1 200 OK"
+2026-08-01 10:12:55,001 | INFO | Model_mechanics.models | Loading drafter model: Qwen/Qwen2.5-3B-Instruct  [dtype=torch.bfloat16, device=cpu]
+2026-08-01 10:12:55,223 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-3B-Instruct/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-01 10:12:55,234 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-3B-Instruct/aa8e72537993ba99e69dfaafa59ed015b17504d1/config.json "HTTP/1.1 200 OK"
+2026-08-01 10:12:55,446 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-3B-Instruct/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-01 10:12:55,457 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-3B-Instruct/aa8e72537993ba99e69dfaafa59ed015b17504d1/config.json "HTTP/1.1 200 OK"
+Loading weights:   0%|          | 0/434 [00:00<?, ?it/s]Loading weights: 100%|██████████| 434/434 [00:00<00:00, 11346.34it/s]
+2026-08-01 10:12:56,942 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-3B-Instruct/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-01 10:12:56,954 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-3B-Instruct/aa8e72537993ba99e69dfaafa59ed015b17504d1/generation_config.json "HTTP/1.1 200 OK"
+2026-08-01 10:12:57,171 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-3B-Instruct/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-01 10:12:57,215 | INFO | Model_mechanics.elo_swiss | EloSwissGenerator initialized: n=12, α=0.50, β=0.100, elo_rounds=6, elo_temp=27.066, threshold=-5.000, sigma_mode=log_ratio_proxy, probabilistic=True
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Strategy: elo_swiss_mode_b
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Traceback (most recent call last):
+  File "/LAB/Swiss-Knife/evaluation/benchmark_gsi_strategies_harmlessness.py", line 597, in <module>
+    main()
+  File "/LAB/Swiss-Knife/evaluation/benchmark_gsi_strategies_harmlessness.py", line 497, in main
+    result = run_single_strategy(
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/LAB/Swiss-Knife/evaluation/benchmark_gsi_strategies_harmlessness.py", line 192, in run_single_strategy
+    output, stats = generator.generate(
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/LAB/swiss-knife/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/LAB/Swiss-Knife/evaluation/../Model_mechanics/elo_swiss_mode_b.py", line 258, in generate
+    compute_logprob(
+  File "/LAB/Swiss-Knife/evaluation/../evaluation/retokenisation_llama_to_qwen.py", line 41, in compute_logprob
+    outputs = model(input_ids=full_ids, attention_mask=attention_mask)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/LAB/swiss-knife/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/LAB/swiss-knife/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/LAB/swiss-knife/lib/python3.12/site-packages/transformers/utils/generic.py", line 907, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/LAB/swiss-knife/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 462, in forward
+    outputs: BaseModelOutputWithPast = self.model(
+                                       ^^^^^^^^^^^
+  File "/LAB/swiss-knife/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/LAB/swiss-knife/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/LAB/swiss-knife/lib/python3.12/site-packages/transformers/utils/generic.py", line 1036, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/LAB/swiss-knife/lib/python3.12/site-packages/transformers/utils/output_capturing.py", line 252, in wrapper
+    outputs = func(self, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/LAB/swiss-knife/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 399, in forward
+    hidden_states = decoder_layer(
+                    ^^^^^^^^^^^^^^
+  File "/LAB/swiss-knife/lib/python3.12/site-packages/transformers/modeling_layers.py", line 93, in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/LAB/swiss-knife/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/LAB/swiss-knife/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/LAB/swiss-knife/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 293, in forward
+    hidden_states, _ = self.self_attn(
+                       ^^^^^^^^^^^^^^^
+  File "/LAB/swiss-knife/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/LAB/swiss-knife/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/LAB/swiss-knife/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 222, in forward
+    query_states, key_states = apply_rotary_pos_emb(query_states, key_states, cos, sin)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/LAB/swiss-knife/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 145, in apply_rotary_pos_emb
+    k_embed = (k * cos) + (rotate_half(k) * sin)
+                           ^^^^^^^^^^^^^^
+  File "/LAB/swiss-knife/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 116, in rotate_half
+    def rotate_half(x):
+    
+KeyboardInterrupt

@@ -1,0 +1,22 @@
+2026-07-30 10:06:37,626 - INFO - Judge client pointed at http://localhost:8003/v1
+2026-07-30 10:06:41,027 - INFO - Loading Detoxify model (CPU)
+2026-07-30 10:06:44,752 - INFO - HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+input:  /LAB/Swiss-Knife/tribunal/bayes_search_harmlessness/eval_results/round5/r5_cfg3/_tribunal_input_tmp (1 model file/s)
+output: /LAB/Swiss-Knife/tribunal/bayes_search_harmlessness/eval_results/round5/r5_cfg3
+judge:  Qwen/Qwen2.5-32B-Instruct @ http://localhost:8003/v1
+detoxify cross-check: True
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 30447.29it/s]
+2026-07-30 10:06:45,102 - INFO - HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-30 10:06:45,315 - INFO - HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-07-30 10:06:45,550 - INFO - HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-30 10:06:45,763 - INFO - HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-07-30 10:06:46,002 - INFO - HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-30 10:06:46,133 - INFO - Resuming r5_cfg3.jsonl: 50 already scored
+2026-07-30 10:06:46,133 - INFO - Nothing new to score in r5_cfg3.jsonl
+
+[1/1] r5_cfg3
+  done in 0.1s (valid 50/50, invalid {})
+
+Scored 1 model/s.
+Report:  /LAB/Swiss-Knife/tribunal/bayes_search_harmlessness/eval_results/round5/r5_cfg3/report/index.html
+Tables:  /LAB/Swiss-Knife/tribunal/bayes_search_harmlessness/eval_results/round5/r5_cfg3/model_summary.csv, /LAB/Swiss-Knife/tribunal/bayes_search_harmlessness/eval_results/round5/r5_cfg3/summary.csv

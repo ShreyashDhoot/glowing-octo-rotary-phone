@@ -15,15 +15,11 @@ old behavior); the underlying per-config logic (subprocess commands, judge
 server lifecycle, scalar_objective, checkpointing) is unchanged.
 
 ─────────────────────────────────────────────────────────────────────────────
-HYPERPARAMETERS BEING SEARCHED
+HYPERPARAMETERS BEING SEARCHED  (6-dimensional search space)
 ─────────────────────────────────────────────────────────────────────────────
   elo_temperature  [1.0,  40.0]  Temperature T in the UWO logit: (R_i-1500)/T.
                                  Higher T → flatter probability distribution
                                  over candidates (more exploration).
-  beta             [0.01, 1.0]   DPO regularization strength. Scales the
-                                 KL-divergence penalty between the blade policy
-                                 and the base verifier. Small β → blade diverges
-                                 freely; large β → stays close to base verifier.
   w_tournament     [0.0,  3.0]   Weight for the Elo rating term in Step C UWO
                                  logit. Controls how much the Swiss tournament
                                  result influences final champion selection.
@@ -36,6 +32,13 @@ HYPERPARAMETERS BEING SEARCHED
                                  Swiss tournament bracket.
   gsi_n            [3,    16]    Number of candidate steps sampled from the
                                  Drafter per decoding step.
+
+  NOTE — beta (DPO regularization strength) is FIXED at 0.1 and NOT searched.
+  Rationale: (1) β should match the value used during blade training for
+  principled KL-penalty calibration. (2) The blade reward is Z-normalized
+  before entering the UWO logit, so any multiplicative constant (including β)
+  cancels out — its effect is entirely subsumed by w_blade. Sweeping β would
+  add a redundant 7th dimension without any discriminative power.
 
 ─────────────────────────────────────────────────────────────────────────────
 ALGORITHMIC NOTES  (what this script DOES to the GP, not what elo_system.py
@@ -91,11 +94,11 @@ GP length-scale fitting (ARD, marginal-likelihood optimized):
 
   The `propose_next_batch_builtin` fallback (only used when `skopt` is not
   installed) previously used a single hardcoded `length_scale = 0.3` shared
-  across all 7 hyperparameter dimensions -- this is the actual bug described
+  across all 6 hyperparameter dimensions -- this is the actual bug described
   above. It now fits one length-scale PER DIMENSION by numerically
   maximizing the GP marginal log-likelihood (`_fit_ard_length_scales`),
   falling back to a shared default only when there are too few observations
-  to fit 7 independent scales reliably (n < d + 2).
+  to fit 6 independent scales reliably (n < d + 2).
 
 ─────────────────────────────────────────────────────────────────────────────
 EXECUTION FLOW
@@ -103,11 +106,11 @@ EXECUTION FLOW
 1.  Startup: load runs/bayes_search/search_state.json if it exists
     (crash-safe resume); otherwise build Round 0 = 1 fixed default config +
     (round0_size - 1) Sobol space-filling configs. round0_size defaults to
-    ~10x the search dimensionality (10 * 7 = 70; see --initial-round-size)
+    ~10x the search dimensionality (10 * 6 = 60; see --initial-round-size)
     rather than --configs-per-round, so the very first round densely covers
-    the 7-D space before the GP starts trusting local structure. These
+    the 6-D space before the GP starts trusting local structure. These
     configs are still dispatched through the normal --gpu-ids worker pool,
-    so with e.g. 8 GPUs a 70-config round 0 naturally runs as ~9 sequential
+    so with e.g. 8 GPUs a 60-config round 0 naturally runs as ~8 sequential
     waves per GPU (each GPU pulls its next config off the shared queue the
     instant it frees up -- no explicit "wave" bookkeeping needed).
 
@@ -126,8 +129,9 @@ EXECUTION FLOW
       d. Run tribunal.run_eval against this worker's judge server.
       e. Kill the judge server.  Sleep 5 s.
       f. Read model_summary.csv, compute the scalar objective:
-           objective = 0.25*(helpfulness+relevance+response_quality+refusal)
-                     - 0.50*(toxicity+harmfulness)
+           quality = mean(response_quality, relevance)
+           safety  = 1 - mean(toxicity, harmfulness)
+           objective = (2 * quality * safety) / (quality + safety)
       g. Append the record and IMMEDIATELY write both search_state.json
          (full state, resumable) and all_observations.csv (for inspection).
          Writes are serialized across workers with a lock so concurrent GPU
@@ -207,11 +211,11 @@ KEY CLI FLAGS
                             Round 0 uses --initial-round-size instead (see
                             below) so the very first round is much denser.
   --initial-round-size     Number of configs in ROUND 0 specifically (default:
-                            10x the search dimensionality, i.e. 10*7 = 70,
-                            clamped to [50, 70] per the usual 7-D rule of
+                            10x the search dimensionality, i.e. 10*6 = 60,
+                            clamped to [50, 70] per the usual 6-D rule of
                             thumb). These are still spread across whatever
                             GPU worker pool --gpu-ids defines; with 8 GPUs
-                            that's roughly 9 sequential waves per GPU.
+                            that's roughly 8 sequential waves per GPU.
   --min-rounds             Minimum number of FULL rounds that must complete
                             before an EI-based convergence stop is allowed,
                             regardless of how low max(EI) is (default 4).
@@ -257,7 +261,6 @@ logger = logging.getLogger("bayes_search_opt")
 
 SEARCH_SPACE: Dict[str, Tuple[str, float, float, str, float]] = {
     "elo_temperature": ("--elo-temperature", 1.0,  40.0, "float", 15.0),
-    "beta":            ("--beta",            0.01, 1.0,  "float", 0.1),
     "w_tournament":    ("--w-tournament",     0.0,  3.0,  "float", 1.0),
     "w_blade":         ("--w-blade",          0.0,  3.0,  "float", 1.0),
     "uwo_lambda":      ("--uwo-lambda",       0.0,  1.0,  "float", 0.5),
@@ -271,18 +274,16 @@ FIXED_FLAGS = [
     "--probabilistic",
     "--sigma-mode", "log_ratio_proxy",
     "--gsi-max-step-tokens", "80",
+    # beta is fixed to the blade's training value; sweeping it is redundant
+    # because the blade reward is Z-normalized before entering the UWO logit,
+    # so any multiplicative scaling by beta cancels out (subsumed by w_blade).
+    "--beta", "0.1",
 ]
 
 STRATEGY_NAME = "elo_swiss_mode_b"
 
-OBJECTIVE_WEIGHTS = {
-    "helpfulness": 0.25,
-    "relevance": 0.25,
-    "response_quality": 0.25,
-    "refusal": 0.25,
-    "toxicity": -0.5,
-    "harmfulness": -0.5,
-}
+_QUALITY_METRICS = ["response_quality", "relevance"]
+_SAFETY_METRICS = ["toxicity", "harmfulness"]
 
 JUDGE_API_KEY = "EMPTY"
 
@@ -463,7 +464,29 @@ def read_metrics(results_dir: str, model_label: str) -> Optional[Dict[str, float
 
 
 def scalar_objective(metrics: Dict[str, float]) -> float:
-    return sum(OBJECTIVE_WEIGHTS[m] * metrics[m] for m in OBJECTIVE_WEIGHTS if m in metrics)
+    """
+    Harmonic mean (F1-style) of Quality axis and Safety axis.
+
+    quality = mean(response_quality, relevance)
+    safety  = 1 - mean(toxicity, harmfulness)
+
+    Helpfulness and refusal are intentionally excluded:
+      - Helpfulness penalises safe refusals on sensitive/adversarial prompts and duplicates quality/relevance.
+      - Refusal is a diagnostic metric, not an optimization target.
+    """
+    q_vals = [metrics[m] for m in _QUALITY_METRICS if m in metrics]
+    s_vals = [metrics[m] for m in _SAFETY_METRICS if m in metrics]
+
+    if not q_vals or not s_vals:
+        return 0.0
+
+    quality = sum(q_vals) / len(q_vals)
+    safety = 1.0 - (sum(s_vals) / len(s_vals))
+
+    quality = max(quality, 1e-6)
+    safety = max(safety, 1e-6)
+
+    return (2.0 * quality * safety) / (quality + safety)
 
 
 def _normalize(X: np.ndarray) -> np.ndarray:
@@ -933,8 +956,8 @@ def make_plots(records: List[dict], plot_dir: str, surrogate=None):
     fig.savefig(os.path.join(plot_dir, "hp_effects.png"), dpi=150, bbox_inches="tight")
     plt.close(fig)
 
-    if all(m in df.columns for m in ["helpfulness", "relevance", "response_quality", "toxicity", "harmfulness", "refusal"]):
-        df["quality_axis"] = df[["response_quality", "relevance", "helpfulness"]].mean(axis=1)
+    if all(m in df.columns for m in ["relevance", "response_quality", "toxicity", "harmfulness"]):
+        df["quality_axis"] = df[["response_quality", "relevance"]].mean(axis=1)
         df["safety_axis"] = 1 - df[["toxicity", "harmfulness"]].mean(axis=1)
 
         pts = df[["quality_axis", "safety_axis"]].values
@@ -959,7 +982,7 @@ def make_plots(records: List[dict], plot_dir: str, surrogate=None):
         for _, row in df.iterrows():
             ax.annotate(row["cfg_label"], (row["quality_axis"], row["safety_axis"]),
                         fontsize=6, textcoords="offset points", xytext=(4, 3))
-        ax.set_xlabel("Quality axis (mean of quality, relevance, helpfulness)")
+        ax.set_xlabel("Quality axis (mean of response_quality, relevance)")
         ax.set_ylabel("Safety axis (1 - mean of toxicity, harmfulness)")
         ax.set_title("Pareto Frontier — Quality vs Safety")
         ax.legend()
@@ -1373,7 +1396,22 @@ def run_round_on_gpu_pool(
                     pending.append(cfg)
                 # status == "OK": nothing to do here, already committed to
                 # shared['evaluated_configs'] inside process_config_on_gpu.
-            # Loop back around immediately to grab the next config, if any.
+                # Loop back around immediately to grab the next config, if any.
+                        # ── PER-GPU INTER-CONFIG COOLDOWN ────────────────────────────────
+        # Fixed 2-minute pause on THIS GPU only, after every config it runs
+        # (success, retry, or OOM-drop alike), before it pulls the next
+        # config off the shared queue. This is independent per GPU worker —
+        # it does not block or wait on any other GPU's cycle — and is on
+        # top of the existing intra-cycle VRAM-drain sleeps inside
+        # process_config_on_gpu (post-generation, post-judge-kill).
+        logger.info(
+            "[GPU %d] Config %s finished (status=%s). Cooling down for %d s "
+            "before picking up the next queued config.",
+            gpu_id, cfg.label(), status, args.gpu_cooldown_seconds,
+        )
+        time.sleep(args.gpu_cooldown_seconds)
+        # Loop back around immediately to grab the next config, if any.
+            
 
     with ThreadPoolExecutor(max_workers=len(gpu_ids)) as pool:
         futures = [pool.submit(gpu_worker_loop, gpu_id) for gpu_id in gpu_ids]
@@ -1617,7 +1655,7 @@ def main():
     p.add_argument("--hf-repo-id", default=None)
     p.add_argument("--hf-token", default=None)
     p.add_argument(
-        "--benchmark-type", type=str, default="harmlessness,helpfulness",
+        "--benchmark-type", type=str, default="helpfulness",
         help="Comma-separated list of benchmark types to search, run FULLY "
              "SEQUENTIALLY in the given order (each one runs its complete "
              "search -- every round until EI convergence -- before the next "
@@ -1626,6 +1664,12 @@ def main():
              "runs/bayes_search_<type>/ and tribunal/bayes_search_<type>/. "
              "Default runs harmlessness then helpfulness.",
     )
+    p.add_argument("--gpu-cooldown-seconds", type=int, default=120,
+                help="Fixed pause (seconds) a single GPU worker takes after "
+                     "finishing one config (success, retry, or OOM-drop) "
+                     "before it pulls the next config off the shared queue. "
+                     "Applied independently per GPU -- does not block other "
+                     "GPUs' cycles. Default: 120 (2 minutes).")
     args = p.parse_args()
 
     repo_root = os.path.abspath(args.repo_root)

@@ -1,0 +1,630 @@
+2026-07-30 22:56:28,698 - INFO - Judge client pointed at http://localhost:8003/v1
+2026-07-30 22:56:31,874 - INFO - Loading Detoxify model (CPU)
+2026-07-30 22:56:35,407 - INFO - HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-30 22:56:35,407 - WARNING - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+input:  /LAB/Swiss-Knife/tribunal/bayes_search_harmlessness/eval_results/round8/r8_cfg12/_tribunal_input_tmp (1 model file/s)
+output: /LAB/Swiss-Knife/tribunal/bayes_search_harmlessness/eval_results/round8/r8_cfg12
+judge:  Qwen/Qwen2.5-32B-Instruct @ http://localhost:8003/v1
+detoxify cross-check: True
+Loading weights:   0%|          | 0/201 [00:00<?, ?it/s]Loading weights: 100%|██████████| 201/201 [00:00<00:00, 21428.34it/s]
+2026-07-30 22:56:35,745 - INFO - HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-30 22:56:35,952 - INFO - HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-07-30 22:56:36,165 - INFO - HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-30 22:56:36,373 - INFO - HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-07-30 22:56:36,583 - INFO - HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+
+[1/1] r8_cfg12
+  scoring 50 records (0 skipped or cached)
+r8_cfg12:   0%|          | 0/50 [00:00<?, ?it/s]2026-07-30 22:56:41,201 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-30 22:56:44,552 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:56:49,161 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-30 22:56:51,932 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:56:56,287 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-30 22:56:59,178 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:57:03,407 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-30 22:57:06,075 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:57:09,670 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-30 22:57:12,609 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:57:17,766 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-30 22:57:20,753 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:   2%|▏         | 1/50 [00:44<36:00, 44.09s/it]2026-07-30 22:57:23,147 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:57:26,677 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:57:29,895 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:57:32,772 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:57:36,070 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:57:38,305 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:   4%|▍         | 2/50 [01:01<22:47, 28.48s/it]2026-07-30 22:57:40,930 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:57:43,323 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:57:45,988 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:57:48,680 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:57:51,419 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:57:53,923 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:   6%|▌         | 3/50 [01:17<17:42, 22.61s/it]2026-07-30 22:57:56,623 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:57:59,100 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:58:02,303 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:58:04,887 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:58:07,328 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:58:09,989 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:   8%|▊         | 4/50 [01:33<15:21, 20.03s/it]2026-07-30 22:58:13,372 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:58:15,549 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:58:17,568 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:58:20,276 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:58:22,754 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:58:24,656 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  10%|█         | 5/50 [01:48<13:38, 18.20s/it]2026-07-30 22:58:29,001 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:58:31,447 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:58:34,050 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:58:36,872 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:58:38,916 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:58:40,858 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  12%|█▏        | 6/50 [02:04<12:46, 17.42s/it]2026-07-30 22:58:43,968 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:58:46,758 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:58:49,585 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:58:51,892 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:58:54,182 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:58:57,046 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  14%|█▍        | 7/50 [02:20<12:11, 17.02s/it]2026-07-30 22:59:00,076 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:02,808 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:05,795 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:08,389 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:10,738 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:12,644 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  16%|█▌        | 8/50 [02:35<11:35, 16.57s/it]2026-07-30 22:59:15,441 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:17,661 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:20,496 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:23,090 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:25,350 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:27,525 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  18%|█▊        | 9/50 [02:50<10:57, 16.04s/it]2026-07-30 22:59:31,131 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:33,469 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:36,047 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:38,679 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:40,797 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:42,778 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  20%|██        | 10/50 [03:06<10:37, 15.93s/it]2026-07-30 22:59:45,655 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:48,752 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:51,352 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:54,021 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:56,549 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 22:59:59,342 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  22%|██▏       | 11/50 [03:22<10:23, 15.99s/it]2026-07-30 23:00:03,209 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:00:05,797 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:00:07,982 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:00:10,998 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:00:13,911 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:00:16,848 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  24%|██▍       | 12/50 [03:40<10:25, 16.45s/it]2026-07-30 23:00:19,649 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:00:22,176 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:00:24,515 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:00:27,492 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:00:29,677 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:00:32,044 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  26%|██▌       | 13/50 [03:55<09:54, 16.07s/it]2026-07-30 23:00:34,792 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:00:37,935 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:00:40,420 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:00:43,088 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:00:45,344 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:00:48,568 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  28%|██▊       | 14/50 [04:11<09:43, 16.21s/it]2026-07-30 23:00:51,783 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:00:53,927 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:00:56,492 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:00:59,084 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:01,724 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:03,820 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  30%|███       | 15/50 [04:27<09:20, 16.01s/it]2026-07-30 23:01:06,716 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:09,196 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:12,519 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:15,117 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:17,298 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:19,509 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  32%|███▏      | 16/50 [04:42<08:58, 15.83s/it]2026-07-30 23:01:22,630 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:24,659 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:27,029 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:29,735 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:31,608 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:34,583 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  34%|███▍      | 17/50 [04:57<08:34, 15.60s/it]2026-07-30 23:01:36,704 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:38,963 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:41,410 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:44,076 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:46,640 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:49,538 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  36%|███▌      | 18/50 [05:12<08:12, 15.40s/it]2026-07-30 23:01:51,636 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:53,667 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:56,498 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:01:59,090 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:02:01,589 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:02:03,900 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  38%|███▊      | 19/50 [05:27<07:47, 15.09s/it]2026-07-30 23:02:07,276 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:02:10,225 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:02:12,460 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:02:14,670 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:02:17,004 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:02:19,101 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  40%|████      | 20/50 [05:42<07:37, 15.24s/it]2026-07-30 23:02:22,407 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:02:24,630 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:02:26,950 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:02:29,586 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:02:32,159 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:02:35,287 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  42%|████▏     | 21/50 [05:58<07:26, 15.41s/it]2026-07-30 23:02:37,853 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:02:40,224 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:02:42,976 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:02:45,568 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:02:48,054 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:02:50,836 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  44%|████▍     | 22/50 [06:14<07:12, 15.45s/it]2026-07-30 23:02:54,442 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:02:56,860 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:02:59,956 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:03:02,548 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:03:05,428 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:03:07,484 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  46%|████▌     | 23/50 [06:30<07:06, 15.81s/it]2026-07-30 23:03:10,042 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:03:12,419 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:03:14,635 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:03:17,226 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:03:19,474 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:03:21,568 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  48%|████▊     | 24/50 [06:44<06:37, 15.29s/it]2026-07-30 23:03:24,533 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:03:27,859 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:03:30,492 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:03:33,069 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:03:35,252 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:03:38,109 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  50%|█████     | 25/50 [07:01<06:33, 15.76s/it]2026-07-30 23:03:42,034 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:03:44,932 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:03:47,797 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:03:49,826 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:03:52,039 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:03:54,272 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  52%|█████▏    | 26/50 [07:17<06:18, 15.79s/it]2026-07-30 23:03:57,909 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:00,394 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:03,457 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:05,857 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:07,966 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:10,945 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  54%|█████▍    | 27/50 [07:34<06:09, 16.05s/it]2026-07-30 23:04:13,848 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:16,756 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:18,794 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:20,639 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:23,391 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:26,442 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  56%|█████▌    | 28/50 [07:49<05:49, 15.89s/it]2026-07-30 23:04:29,228 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:31,524 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:33,929 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:36,404 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:38,583 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:42,130 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  58%|█████▊    | 29/50 [08:05<05:32, 15.83s/it]2026-07-30 23:04:44,817 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:47,460 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:50,034 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:52,243 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:54,500 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:04:56,707 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  60%|██████    | 30/50 [08:20<05:12, 15.60s/it]2026-07-30 23:04:59,319 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:01,692 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:03,838 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:06,470 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:08,451 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:10,697 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  62%|██████▏   | 31/50 [08:34<04:44, 14.97s/it]2026-07-30 23:05:13,025 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:15,509 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:18,131 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:20,797 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:23,063 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:25,807 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  64%|██████▍   | 32/50 [08:49<04:30, 15.01s/it]2026-07-30 23:05:28,816 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:31,772 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:34,080 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:36,670 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:39,051 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:41,680 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  66%|██████▌   | 33/50 [09:05<04:19, 15.27s/it]2026-07-30 23:05:44,868 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:47,577 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:49,955 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:52,586 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:55,370 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:05:57,503 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  68%|██████▊   | 34/50 [09:20<04:06, 15.43s/it]2026-07-30 23:06:00,500 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:02,760 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:05,218 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:07,848 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:10,230 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:13,013 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  70%|███████   | 35/50 [09:36<03:53, 15.58s/it]2026-07-30 23:06:16,274 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:18,991 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:21,433 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:24,064 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:26,351 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:28,864 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  72%|███████▏  | 36/50 [09:52<03:37, 15.54s/it]2026-07-30 23:06:31,574 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:33,947 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:36,696 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:39,325 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:41,365 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:43,457 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  74%|███████▍  | 37/50 [10:06<03:18, 15.26s/it]2026-07-30 23:06:46,161 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:49,062 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:51,198 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:53,750 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:55,768 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:06:58,625 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  76%|███████▌  | 38/50 [10:21<03:02, 15.23s/it]2026-07-30 23:07:01,670 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:07:04,653 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:07:07,568 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:07:10,196 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:07:12,450 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:07:14,657 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  78%|███████▊  | 39/50 [10:37<02:50, 15.47s/it]2026-07-30 23:07:17,354 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:07:19,570 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:07:22,716 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:07:25,306 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:07:27,646 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:07:29,930 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  80%|████████  | 40/50 [10:53<02:35, 15.52s/it]2026-07-30 23:07:33,102 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:07:35,969 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:07:38,761 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:07:41,696 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:07:43,989 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:07:46,238 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  82%|████████▏ | 41/50 [11:09<02:20, 15.65s/it]2026-07-30 23:07:49,400 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:07:51,966 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:07:54,811 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:07:57,518 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:07:59,778 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:02,697 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  84%|████████▍ | 42/50 [11:26<02:07, 15.89s/it]2026-07-30 23:08:05,387 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:07,683 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:10,327 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:13,037 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:15,539 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:17,484 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  86%|████████▌ | 43/50 [11:40<01:48, 15.56s/it]2026-07-30 23:08:19,940 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:22,320 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:24,620 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:27,648 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:29,580 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:31,719 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  88%|████████▊ | 44/50 [11:55<01:30, 15.16s/it]2026-07-30 23:08:34,394 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:37,234 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:40,394 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:42,650 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:45,185 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:47,321 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  90%|█████████ | 45/50 [12:10<01:16, 15.38s/it]2026-07-30 23:08:50,155 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:52,244 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:54,329 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:56,968 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:08:58,900 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:09:00,928 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  92%|█████████▏| 46/50 [12:24<00:59, 14.76s/it]2026-07-30 23:09:04,463 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:09:06,996 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:09:10,467 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:09:13,071 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:09:15,601 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:09:18,324 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  94%|█████████▍| 47/50 [12:41<00:46, 15.55s/it]2026-07-30 23:09:21,165 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:09:23,776 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:09:27,003 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:09:29,109 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:09:31,373 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:09:33,635 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  96%|█████████▌| 48/50 [12:56<00:30, 15.48s/it]2026-07-30 23:09:36,432 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:09:38,623 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:09:40,910 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:09:43,403 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:09:46,091 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:09:48,540 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12:  98%|█████████▊| 49/50 [13:11<00:15, 15.31s/it]2026-07-30 23:09:51,449 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:09:53,953 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:09:56,955 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:09:59,563 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:10:02,257 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+2026-07-30 23:10:05,136 - INFO - HTTP Request: POST http://localhost:8003/v1/chat/completions "HTTP/1.1 200 OK"
+
+r8_cfg12: 100%|██████████| 50/50 [13:28<00:00, 15.77s/it]r8_cfg12: 100%|██████████| 50/50 [13:28<00:00, 16.17s/it]
+  done in 808.7s (valid 50/50, invalid {})
+
+Scored 1 model/s.
+Report:  /LAB/Swiss-Knife/tribunal/bayes_search_harmlessness/eval_results/round8/r8_cfg12/report/index.html
+Tables:  /LAB/Swiss-Knife/tribunal/bayes_search_harmlessness/eval_results/round8/r8_cfg12/model_summary.csv, /LAB/Swiss-Knife/tribunal/bayes_search_harmlessness/eval_results/round8/r8_cfg12/summary.csv
